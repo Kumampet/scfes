@@ -1,5 +1,28 @@
 @charset "utf-8";
 
+//背景ストライプ柄の設定
+@mixin stripes($direction, $colors) {//$direction:色を並べる方向, $colors:並べるカラーコード
+    $length: length($colors); //$lengs:色の数
+   
+    @if $length > 1 {//色の数が１より大きい(複数色ある)場合はストライプスにする処理を行う
+      $stripes: ();
+   
+      @for $i from 1 through $length {
+        $stripe: (100% / $length) * ($i - 1);
+   
+        @if $i > 1 {
+          $previous-color: nth($colors, $i - 1);
+          $stripes: append($stripes, $previous-color $stripe, comma);
+        }
+   
+        $stripes: append($stripes, nth($colors, $i) $stripe, comma);
+      }
+      background: linear-gradient($direction, $stripes) fixed;
+    } @else if $length == 1 {//色の数が単色の場合はその色で全面塗りつぶす
+      background-color: $colors;
+    }
+  }
+
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +31,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
+
     
         #title-content{
             position: absolute;
@@ -20,17 +44,15 @@
                 top: 40%;
                 left: 50%;
             }
-            #muse{
+            #checkbox{
                 position: absolute;
                 transform: translate(-50%, -50%);
                 top: 50%;
                 left: 50%;
-            }
-            #aqours{
-                position: absolute;
-                transform: translate(-50%, -55%);
-                top: 55%;
-                left: 50%;
+                input{
+                    margin: 0 10px 0 20px;
+                    vertical-align: middle;
+                }
             }
         }
     }
