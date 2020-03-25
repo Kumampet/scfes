@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+* #content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+* #content #title-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+* #content #title-content .title {
+  position: absolute;
+  transform: translate(-50%, -40%);
+  top: 40%;
+  left: 50%;
+}
+* #content #title-content #muse {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+* #content #title-content #aqours {
+  position: absolute;
+  transform: translate(-50%, -55%);
+  top: 55%;
+  left: 50%;
+}
